@@ -24,3 +24,10 @@ This file builds upon Part One and adds functionality:
 - **Data Insertion**: Inserting sample data into the tables.
 - **Basic SELECT Queries**: Writing simple queries to retrieve data from the tables.
 - **Relationship Queries**: Querying data from multiple tables using basic SQL joins.
+
+### 3. **Company Database Diagram**
+This PNG file (company-database.png) provides a **visual representation of the Company Database schema**. It includes:
+- **Table Structures**: Diagrams showing the structure of the `Employee`, `Branch`, `Client`, `Works_With`, and `Branch_Supplier` tables.
+- **Relationships**: Clear illustrations of how tables are related, highlighting primary and foreign keys.
+- **Entity Attributes**: A detailed breakdown of the attributes for each entity in the database.
+  
