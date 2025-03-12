@@ -14,16 +14,52 @@ The primary goal of this project is to provide hands-on experience with SQL. By 
 ## Files Included
 
 ### 1. **learningConcepts_PartOne.sql**
-This file introduces the basics of SQL:
-- **Table Creation**: Learning how to create tables and define columns.
-- **Data Types**: Understanding various data types used in SQL.
-- **Primary and Foreign Keys**: Defining primary and foreign keys to establish relationships between tables.
+This file introduces the basics of SQL, focusing on table creation, data types, constraints, and basic queries:
+- **Table Creation**: The file demonstrates how to create tables, define columns, and set primary keys. For example, a `student` table is created with attributes like `student_id`, `name`, and `major`. Data types such as `INT`, `VARCHAR`, `DECIMAL`, `DATE`, and `TIMESTAMP` are explained.
+  
+- **Adding and Removing Columns**: It also covers modifying tables using `ALTER TABLE` to add or remove columns. For instance, adding a `gpa` column or removing it from the `student` table.
+
+- **Inserting Data**: Instructions for inserting data into tables using the `INSERT INTO` command are provided. Data is inserted with specific attributes (e.g., `student_id`, `name`, `major`), and handling `NULL` values is explained.
+
+- **Constraints**: The file covers the use of constraints like `NOT NULL`, `UNIQUE`, and `DEFAULT`. It shows how to create a table with constraints that enforce certain data conditions (e.g., a `name` column cannot be `NULL`, or the `major` field must be unique).
+
+- **Auto Increment**: The use of the `AUTO_INCREMENT` attribute for automatically generating unique values for a column (e.g., `student_id`) is demonstrated.
+
+- **Basic Queries**: Several basic queries are provided to practice selecting, filtering, and ordering data:
+  - **SELECT**: Retrieving all data or specific columns from a table.
+  - **ORDER BY**: Sorting data in ascending or descending order.
+  - **LIMIT**: Limiting the number of rows returned.
+  - **WHERE**: Filtering data with conditions, including `IN`, `<>`, and `AND` operators.
+  
+- **Updating Data**: The file includes `UPDATE` queries for modifying existing data based on specific conditions (e.g., changing a student's major or updating a name).
+
+- **Deleting Data**: The `DELETE` command is used to remove rows from a table. Examples include deleting all rows or deleting specific rows based on conditions.
 
 ### 2. **CompanyDatabase_LearningConcepts.sql**
-This file builds upon Part One and adds functionality:
-- **Data Insertion**: Inserting sample data into the tables.
-- **Basic SELECT Queries**: Writing simple queries to retrieve data from the tables.
-- **Relationship Queries**: Querying data from multiple tables using basic SQL joins.
+This file continues from Part One and introduces the creation of multiple related tables, data insertion, and setting up foreign keys and relationships:
+- **Table Creation**: The following tables are created:
+  - **Employee**: Contains employee information such as `emp_id`, `first_name`, `last_name`, `birth_day`, `sex`, `salary`, and `super_id` (supervisor). The `emp_id` is the primary key, and `super_id` and `branch_id` are foreign keys linking to the `employee` and `branch` tables, respectively.
+  - **Branch**: Stores branch information such as `branch_id`, `branch_name`, and `mgr_id` (branch manager). The `mgr_id` is a foreign key referencing the `employee` table.
+  - **Client**: Contains client details with a foreign key `branch_id` linking to the `branch` table.
+  - **Works_With**: This table tracks which employees work with which clients, using a composite primary key (`emp_id`, `client_id`) and foreign keys referencing the `employee` and `client` tables.
+  - **Branch_Supplier**: Contains supplier details for each branch, using a composite primary key (`branch_id`, `supplier_name`) and a foreign key referencing the `branch` table.
+
+- **Foreign Key Constraints**: The foreign keys are defined with cascading actions:
+  - **ON DELETE SET NULL**: When a referenced row is deleted, the foreign key column is set to `NULL` in the dependent row.
+  - **ON DELETE CASCADE**: When a referenced row is deleted, the corresponding rows in the dependent table are also deleted.
+
+- **Data Insertion**: Data is inserted into the tables in stages:
+  - **Employee Table**: Employees such as David Wallace and Jan Levinson are inserted with their corresponding branch and supervisor information.
+  - **Branch Table**: Branches such as `Corporate`, `Scranton`, and `Stamford` are created, with managers assigned.
+  - **Works With Table**: This table records the sales information for employees working with clients.
+  - **Branch Supplier Table**: Details of branch suppliers are added, such as suppliers for the Scranton and Stamford branches.
+  - **Client Table**: Clients like FedEx, Dunmore Highschool, and others are added, linked to specific branches.
+
+- **Basic Queries**: Several queries are provided to retrieve data from the tables:
+  - Displaying all employees, branches, suppliers, and clients.
+  - Fetching specific employees or clients based on criteria (e.g., employees ordered by salary or clients belonging to a specific branch).
+
+- **Data Update**: Examples of using `UPDATE` to modify data, such as updating the branch information for employees after inserting branch records.
 
 ### 3. **company-database.png**
 This PNG file (company-database.png) provides a **visual representation of the Company Database schema**. It includes:
